@@ -41,7 +41,7 @@ var cardId = this.getAttribute("data-id");
 this.setAttribute('src',cards[cardId].cardImage);
 if (cardsInPlay.length === 2) {
 	if (cardsInPlay[0] === cardsInPlay[1]) {
-	alert("You fond a match!");
+	alert("You found a match!");
 } else {
  	alert("Sorry, try again.");
 }
