@@ -12,6 +12,7 @@ var cards = [
        rank: "queen",
        suit: "diamonds",
        cardImage: "images/queen-of-diamonds.png"
+   },
    {
        rank: "king",
        suit: "hearts",
@@ -33,9 +34,11 @@ var checkForMatch = function () {
   } else {
       console.log("Sorry, try again.");
   }
-
 }
-var flipCard = function (cardId) {
+
+var flipCard = function () {
+var cardId = this.getAttribute("data-id");
+this.setAttribute('src',cards[cardId].cardImage);
 if (cardsInPlay.length === 2) {
 	if (cardsInPlay[0] === cardsInPlay[1]) {
 	alert("You fond a match!");
@@ -52,18 +55,17 @@ console.log(cards[cardId].suit);
 }
 
 
-flipCard.(0);
-flipCard.(2);
-
 var createBoard = function (){
 	 for (var i = 0; i < cards.length; i++) {
     var cardElement = document.createElement('img');
     cardElement.setAttribute('src', "images/back.png");
-
-
+    cardElement.setAttribute('data-id', i);
+    cardElement.addEventListener("click", flipCard);
+    document.getElementById('game-board').appendChild(cardElement);
   };
+}
 
- document.getElementsByTagName('cardElement')[0].addEventListener('click', flipCard);
- document.getElementById('game-board').appendChild(cardElement);
+createBoard();
+
 
 
